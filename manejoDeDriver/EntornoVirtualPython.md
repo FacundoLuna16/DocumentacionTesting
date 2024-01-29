@@ -1,0 +1,57 @@
+# Entornos Virtuales en Python con `Requirements.txt`
+
+
+> ## Importancia de los entornos Virtuales
+
+Los entornos virtuales son cruciales para mantener la **consistencia** y la **reproducibilidad** en el desarrollo de software.
+Garantizan que todas las personas que colaboran en un proyecto utilicen las mismas versiones de las bibliotecas, evitando posibles conflictos y facilitando la distribución y ejecución del código en diferentes entornos.
+
+***
+
+> ## Creacion de un Entorno Virtual
+
+Para crear un entorno virtual en Python, puedes utilizar ``venv`` ejecutando el siguiente comando en la terminal ubicado en la *raiz del proyecto*
+
+```bash
+> python -m venv nombre_del_entorno
+```
+
+Esto creará un directorio llamado ``nombre_del_entorno`` que contiene un entorno virtual aislado
+
+>NOTA: Este comando nos creara una carpeta con el nombre del entorno en la raiz del proyecto 
+
+***
+
+> ## Activar el entorno Virtual
+
+En windows para poder activar un entorno virtual (previamente creado), tenemos que ubicarnos en la raiz del proyecto donde se creo el entorno y colocar en la terminal
+
+```bash
+> nombre_del_entorno\Scripts\activate
+```
+
+para desactivarlo, colocamos en la terminal
+
+```bash
+> deactivate
+```
+
+***
+> ## Instalando dependencias desde un archivo requirements.txt
+
+El archivo ``requirements.txt`` es un archivo de texto plano que lista las dependencias del proyecto y sus versiones por ejemplo:
+
+```
+pytest
+selenium==4.8.3
+webdriver-manager
+pytest-html
+```
+Para instalar las dependencias desde el archivo ``requirements.txt``, ejecuta el siguiente comando
+
+```bash
+> pip install -r requirements.txt
+```
+Esto instalará todas las bibliotecas enumeradas en el archivo, asegurando que se utilicen las versiones correctas.
+
+
