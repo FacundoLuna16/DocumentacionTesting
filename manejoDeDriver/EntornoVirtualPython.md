@@ -15,6 +15,7 @@ Para crear un entorno virtual en Python, puedes utilizar ``venv`` ejecutando el 
 ```bash
 > python -m venv nombre_del_entorno
 ```
+> ejemplo : **python -m venv autoTest**
 
 Esto creará un directorio llamado ``nombre_del_entorno`` que contiene un entorno virtual aislado
 
@@ -27,8 +28,14 @@ Esto creará un directorio llamado ``nombre_del_entorno`` que contiene un entorn
 En windows para poder activar un entorno virtual (previamente creado), tenemos que ubicarnos en la raiz del proyecto donde se creo el entorno y colocar en la terminal
 
 ```bash
-> nombre_del_entorno\Scripts\activate
+> autoTest\Scripts\activate
 ```
+Se debe agregar el nombre del entorno virtual en nuestra terminal como se ve en la imagen
+![](../img/terminal.png)
+- Para linux:
+    ```bash
+    
+    ```
 
 para desactivarlo, colocamos en la terminal
 

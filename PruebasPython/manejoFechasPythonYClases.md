@@ -87,6 +87,43 @@ nombre_aleatorio = generar_nombre_aleatorio()
 print("Nombre aleatorio:", nombre_aleatorio)
 ```
 
+### Generación de Datos Realistas con la Librería Faker en Python
+
+La librería Faker en Python ofrece una forma eficiente y realista de generar datos ficticios. Con Faker, podemos crear nombres, direcciones, correos electrónicos, números de teléfono, etc.
+Lo más fascinante de esta librería es su capacidad para proporcionar datos personalizados según la región. Por ejemplo, si deseamos obtener datos en español y específicamente de Argentina, podemos instanciar Faker con el atributo ``"es_AR"``.
+
+
+- #### generamos nombres y direcciones
+faker nos permite crear datos de manera muy intuitiva
+```python
+from faker import Faker
+
+fake = Faker("es_AR")
+nombre = fake.name()
+direccion = fake.address()
+email = fake.email()
+print(nombre)
+print("-"*20)
+print(direccion)
+print("-"*20)
+print(email)
+
+#Otras
+nombre = fake.first_name()
+apellido = fake.last_name()
+calle = fake.street_name()
+numero = fake.building_number()
+ciudad = fake.city()
+```
+
+
+
+> [Funciones de faker para datos personalizados en argentina](https://faker.readthedocs.io/en/master/locales/es_AR.html)
+
+
+
+> [Documentacion faker general](https://faker.readthedocs.io/en/master/)
+
 ## Parseo de Datos
 muchas veces necesitamos separar una cadena de caracteres, por ejemplo tenemos el nombre y el apellido de una persona en una cadena de caracteres, y necesitamos utilizar solo el nombre, en este caso podemos utilizar el metodo **split()** que poseen los datos del tipo ``String`` 
 
@@ -120,3 +157,8 @@ info_DNI = parsear_dni(cuil)
 print(info_DNI)
 ```
 
+
+# Entendiendo Clases en Python
+Una clase es un modelo o plantilla que define atributos y comportamientos de una entidad.
+
+El objetivo de este apartado es que sepan utilizar una clase en python, como crearlas, como instanciarlas y como utilizar 
