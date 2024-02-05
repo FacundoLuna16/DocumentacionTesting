@@ -176,7 +176,10 @@ print("Nombre aleatorio:", nombre_aleatorio)
 
 La librería Faker en Python ofrece una forma eficiente y realista de generar datos ficticios. Con Faker, podemos crear nombres, direcciones, correos electrónicos, números de teléfono, etc.
 Lo más fascinante de esta librería es su capacidad para proporcionar datos personalizados según la región. Por ejemplo, si deseamos obtener datos en español y específicamente de Argentina, podemos instanciar Faker con el atributo ``"es_AR"``.
-
+<span style="color:red">Recordar Instalar, antes de usar!!</span>
+```bash
+pip install faker
+```
 
 - #### generamos nombres y direcciones
 faker nos permite crear datos de manera muy intuitiva
