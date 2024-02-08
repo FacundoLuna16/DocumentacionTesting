@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  mysql:
+    container_name: mysqlContainer
+    image: mysql:8.2.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=merlinData
+      - MYSQL_DATABASE=merlin
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=merlinData
+    volumes:
+      - ./db/mysql_data:/var/lib/mysql
