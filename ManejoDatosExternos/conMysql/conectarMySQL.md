@@ -1,3 +1,19 @@
+# En este documento vamos a ver la conexion con base de datos mysql
+
+MySQL es un sistema de gestión de bases de datos **relacional**, y Python proporciona diversas herramientas para interactuar con él de manera efectiva.
+
+####  <span style="color:red">Importante!</span> Instalacion de dependencia
+
+Utilizaremos para establecer la conexion con la base de datos la biblioteca `mysql-connector-python` con el comando.
+
+```bash
+pip install mysql-connector-python
+```
+
+#### Conexion con la base de datos
+Ahora, veamos cómo establecer una conexión con una base de datos MySQL utilizando Python
+y como venimos hablando, esto lo colocaremos en una clase
+```python
 import mysql.connector
 
 
@@ -33,10 +49,8 @@ class CargadorDatosMySQL:
 
     def mostrar_datos(self):
         try:
-            # Seleccionar todos los datos de la tabla
             self.cursor.execute("SELECT * FROM suma")
 
-            # Obtener y mostrar los resultados
             resultados = self.cursor.fetchall()
             print("\nDatos en la tabla:")
             for resultado in resultados:
@@ -44,15 +58,19 @@ class CargadorDatosMySQL:
 
         except mysql.connector.Error as e:
             print(f"Error al mostrar datos: {e}")
+```
+Este código intentará establecer una conexión con la base de datos y mostrará un mensaje indicando si la conexión fue exitosa o si ocurrió algún error.
 
+A esto lo podemos probar colocando al final del documento (donde esta ubicada la clase) lo siguiente:
 
+```python
 if __name__ == "__main__":
-    config = {
-        'host': 'localhost',
-        'user': 'dev',
-        'password': 'merlinData',
-        'database': 'merlin'
-    }
+    # config = {
+    #     'host': 'localhost',
+    #     'user': 'dev',
+    #     'password': 'merlinData',
+    #     'database': 'merlin'
+    # }
 
     cargador = CargadorDatosMySQL("localhost", "dev", "merlinData", "merlin")
     # o tambien
@@ -67,3 +85,6 @@ if __name__ == "__main__":
 
     cargador.desconectar()
     print(f"desconectado")
+```
+
+## Creacion de una instancia de mysql con Docker
