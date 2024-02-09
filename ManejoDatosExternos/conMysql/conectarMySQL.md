@@ -87,4 +87,53 @@ if __name__ == "__main__":
     print(f"desconectado")
 ```
 
-## Creacion de una instancia de mysql con Docker
+## Creacion de una instancia de mysql con Docker para probar
+<span style="color:red">Importante!</span> tener docker instalado
+
+Vamos a crear un archivo llamado `docker-compose.yml` con el siguiente contenido
+
+```yml
+version: '3.9'
+
+services:
+  mysql:
+    container_name: mysqlContainer
+    image: mysql:8.2.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=merlinData
+      - MYSQL_DATABASE=merlin
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=merlinData
+    volumes:
+      - ./db/mysql_data:/var/lib/mysql
+```
+
+crearemos un archivo llamado `dump.sql` con el siguiente contenido:
+```sql
+CREATE TABLE IF NOT EXISTS suma (
+    a INT,
+    b INT,
+    resultado INT
+);
+
+INSERT INTO suma (a, b, resultado) VALUES (2, 3, 5);
+INSERT INTO suma (a, b, resultado) VALUES (0, 0, 0);
+INSERT INTO suma (a, b, resultado) VALUES (-1, 1, 0);
+```
+
+nos ubicaremos a la altura del ``docker-compose.yml`` y colocaremos los siguientes comandos
+```bash
+docker-compose up mysql -d
+
+cp dump.sql ./db/mysql_data/
+
+docker exec -it mysqlContainer /bin/bash
+
+mysql -u root -p merlin < /var/lib/mysql/dump.sql
+
+Enter password: merlinData
+
+exit
+```
