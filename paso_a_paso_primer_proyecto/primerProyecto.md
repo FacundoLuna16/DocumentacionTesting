@@ -51,6 +51,7 @@
         ```powershell
         iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
         ```
+        > si no funciona colocar: **iex "& {$(irm get.scoop.sh)} -RunAsAdmin"**
         3. Configura la ejecución de scripts:
     
         ```powershell
@@ -148,6 +149,7 @@ Organizaremos el proyecto en varias carpetas, cada una con un propósito especí
         btn_aceptar_cookies = (
             By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
         buscador = (By.XPATH, "//input[@placeholder='Buscar…']")
+        #buscador = (By.XPATH, "//input[@name='q']")
 
         def test_busqueda(self):
             driver = webdriver.Chrome(service=Service(
@@ -239,11 +241,112 @@ Vamos a agregar comentarios para poder visualizar el resultado de nuestras prueb
     ```bash
     allure serve .\reports\allure-results
     ```
-
-### En este documento vimos!
 ---
 - [x] PreCondiciones(entorno virtual, instalacion de allure)
 - [x] Creacion de estructura de carpetas
 - [x] Creacion del primer Script
 - [x] Visualizacion de pruebas con Allure
+- [ ] Agregamos fixture al test
+---
+
+#### Agregamos el uso de Fixture
+En python con la biblioteca pytest, tenemos la opcion de usar el decorador `@pytest.fixture` 
+
+
+```python
+import pytest
+import allure
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+class Test:
+
+    btn_aceptar_cookies = (
+        By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
+    buscador = (By.XPATH, "//input[@placeholder='Buscar…']")
+
+    @pytest.fixture(autouse=True)
+    def setup_teardown(self):
+        self.driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install())
+        )
+        self.driver.maximize_window()
+        self.driver.get("https://es.stackoverflow.com/")
+
+        yield  # Lo que este despues de yield se ejecuta despues de cada test
+
+        print("Cerrar Browser")
+        self.driver.quit()
+
+    @allure.title("Validar busqueda en stackoverflow")
+    @allure.description("Validar que se pueda buscar en stackoverflow")
+    def test_busqueda(self):
+        driver = self.driver
+
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable(self.btn_aceptar_cookies))
+
+        with allure.step("Validar que se muestre el boton de aceptar cookies"):
+            btn_cookies = driver.find_element(*self.btn_aceptar_cookies)
+            assert btn_cookies.is_displayed()
+
+        with allure.step("Aceptar cookies"):
+            btn_cookies.click()
+
+        WebDriverWait(driver, 10).until(
+            EC.visibility_of_element_located(self.buscador))
+
+        with allure.step("Validar que se muestre el buscador"):
+            caja_busqueda = driver.find_element(*self.buscador)
+            assert caja_busqueda.is_displayed()
+
+        with allure.step("Realizar busqueda"):
+            caja_busqueda.clear()
+            with allure.step("Validamos que la caja de busqueda este vacia"):
+                assert caja_busqueda.get_attribute("value") == ""
+
+            with allure.step("Validamos que el len de la caja de busqueda sea 0"):
+                assert len(caja_busqueda.get_attribute("value")) == 0
+
+            caja_busqueda.send_keys("python")
+            with allure.step("Validamos que la caja de busqueda contenga la palabra python"):
+                assert caja_busqueda.get_attribute("value") == "python"
+
+            caja_busqueda.send_keys(Keys.ENTER)
+
+        with allure.step("Validar que se muestre el resultado de la busqueda"):
+            assert "python" in driver.title
+
+
+if __name__ == "__main__":
+    pytest.main()
+
+```
+
+lo ejecutamos con:
+```bash
+pytest -vs .\test\test_case_stack.py --alluredir reports/allure-results
+```
+
+y visualizamos con:
+```bash
+allure serve .\reports\allure-results
+```
+
+
+
+### En este documento vimos!
+
+---
+- [x] PreCondiciones(entorno virtual, instalacion de allure)
+- [x] Creacion de estructura de carpetas
+- [x] Creacion del primer Script
+- [x] Visualizacion de pruebas con Allure
+- [x] Agregamos fixture al test
 ---

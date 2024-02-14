@@ -121,6 +121,7 @@ class TestWiki:
         caja_busqueda = self.driver.find_element(By.ID, "searchInput")
         print("Limpiamos la caja de busqueda")
         caja_busqueda.clear()
+        assert caja_busqueda.get_attribute("value") == "", "El elemento no se encuentra"
         print("Ingresamos el valor TDD en la caja de busqueda")
         caja_busqueda.send_keys("TDD")
         print("Presionamos ENTER")
