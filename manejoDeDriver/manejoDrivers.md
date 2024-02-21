@@ -42,9 +42,9 @@ Cambiamos el argumento del import de `webdriver_manager` por el de "GeckoDriverM
 
 ```python
 from selenium.webdriver.edge.service import Service
-from webdriver_manager.microsoft import EdgeDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
-driver = webdriver.Edge(service=Service(EdgeDriverManager().install()))
+driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
 ```
 
 ### Otros Drivers
