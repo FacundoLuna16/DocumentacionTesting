@@ -55,3 +55,5 @@ btn_aceptar_cookies = (driver.find_element(*btn_locator_aceptar_cookies))
     ![](./img/metodosEspera.png)
     > nota: la funcion **is_selected()** da falso, ya que se esta probando sobre un elemento que no tiene un estado de "seleccionado" o "no seleccionado".
     >Este deberia utilizarse en elementos web como check o radio button.
+
+Para ampliar les dejamos documentacion [Aqui](https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement)
