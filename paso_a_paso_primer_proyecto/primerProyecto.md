@@ -148,7 +148,7 @@ Organizaremos el proyecto en varias carpetas, cada una con un propósito especí
 
         btn_aceptar_cookies = (
             By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
-        buscador = (By.XPATH, "//input[@placeholder='Buscar…']")
+        txt_caja_busqueda    = (By.XPATH, "//input[@placeholder='Buscar…']")
         #buscador = (By.XPATH, "//input[@name='q']")
 
         def test_busqueda(self):
