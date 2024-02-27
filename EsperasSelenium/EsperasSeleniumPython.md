@@ -70,4 +70,4 @@ Una espera **implícita** hace que WebDriver sondee el DOM durante un cierto per
     sleep(5)
     ```
 
-    La espera implícita es útil para gestionar casos donde los elementos de la página pueden tardar en cargarse, pero estos generan un tiempo de espera adicional, por lo tanto se recomienda el uso de **Esperas Explicitas** para mejorar la eficiencia de las pruebas
+    La espera implícita es útil para gestionar casos donde los elementos de la página pueden tardar en cargarse, pero estos generan un tiempo de espera adicional, por lo tanto se recomienda el uso de **Esperas Explicitas** para mejorar el tiempo de eficiencia de las pruebas
