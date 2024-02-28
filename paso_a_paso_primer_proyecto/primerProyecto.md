@@ -41,6 +41,25 @@
     pip install -r requirements.txt
     ```
 
+#### Instalacion de java 
+Para hacer uso de allure debemos tener java instalado, por lo cual vamos a acceder a la [pagina oficial de Java](https://www.oracle.com/ar/java/technologies/downloads/#jdk21-windows)
+
+![](./img/IntalacionJavaExe.png)
+
+Seleccionamos la opcion del medio, notando que esta finaliza con .exe
+
+La ejecutamos e instalamos
+
+- Ahora necesitamos agregar la variable de entorno 
+    1. Hacemos click en el icono de windows, y en el buscador colocamos `variables de entorno del sistema`
+    2. En la ventana que se abre, hacemos click en el boton inferior que se llama `variables de entorno...`
+        ![](./img/primera.png)
+    3. En la ventana que se abre, debemos hacer click en `Nueva` y agregamos lo que se ve en las siguientes imagenes
+        ![](./img/segunda.png)
+        ![](./img/tercera.png)
+
+
+
 #### instalacion de allure
 1. en windows
     - Instalar Scoop
