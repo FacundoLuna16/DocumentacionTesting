@@ -33,8 +33,7 @@ class StackHomePage:
     """
     Clase que representa la Page Object de la página principal de Stack Overflow en español.
     """
-
-    buscador = (By.XPATH, "//input[@placeholder='Buscar…']")
+    txt_locator_buscador = (By.XPATH, "//input[@name='q']")
     btn_aceptar_cookies = (
         By.XPATH, "//button[@id='onetrust-accept-btn-handler']")
     btn_iniciar_sesion = (By.XPATH, "//a[normalize-space()='Iniciar sesión']")
@@ -52,7 +51,6 @@ class StackHomePage:
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(self.btn_aceptar_cookies)
         )
-
         if self.driver.find_element(*self.btn_aceptar_cookies).is_displayed():
             self.driver.find_element(*self.btn_aceptar_cookies).click()
 
@@ -62,9 +60,9 @@ class StackHomePage:
         Método para limpiar el contenido de la caja de búsqueda.
         """
         WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.buscador)
+            EC.visibility_of_element_located(self.txt_locator_buscador)
         )
-        self.driver.find_element(*self.buscador).clear()
+        self.driver.find_element(*self.txt_locator_buscador).clear()
 
     @allure.step("buscamos el texto \"{texto}\" en la caja de búsqueda")
     def buscar(self, texto):
@@ -72,13 +70,14 @@ class StackHomePage:
         Método para realizar una búsqueda en la caja de búsqueda.
         """
         WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.buscador)
+            EC.visibility_of_element_located(self.txt_locator_buscador)
         )
-        self.driver.find_element(*self.buscador).send_keys(texto)
-        with allure.step("presionamos la tecla ENTER"):
-            self.driver.find_element(*self.buscador).send_keys(Keys.ENTER)
+        self.driver.find_element(*self.txt_locator_buscador).send_keys(texto)
 
-    @allure.step("Hacemos clic en el botón para reedirigirnos a la página de usuarios")
+        with allure.step("presionamos la tecla ENTER"):
+            self.driver.find_element(*self.txt_locator_buscador).send_keys(Keys.ENTER)
+
+    @allure.step("Hacemos clic en el botón para redirigirnos a la página de usuarios")
     def click_usuarios(self):
         """
         Método para dirigirse a la sección de usuarios.
