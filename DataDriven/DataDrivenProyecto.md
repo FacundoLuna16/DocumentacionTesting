@@ -183,6 +183,10 @@ Con esto podemos probar si nuestros nuestro test de la siguiente manera
 python -m pytest --browser=chrome --ambiente=qa
 ```
 
+la estructura de carpetas y archivos debe quedar asi:
+
+![](./img/carpetas_final.png)
+
 ----
 <div style="display: flex; justify-content: space-between;">
   <div>
