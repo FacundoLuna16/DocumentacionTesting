@@ -1,8 +1,3 @@
-
-<div style="text-align: right;">
-  <img src="./img/logoTSARG.png" alt="Escudo" width="200"/>
-</div>
-
 # Data driven 
 En pocas palabras, es un enfoque en el cual los datos de prueba estan separados del código de prueba y se almacenan en archivos externos o bases de datos. 
 
@@ -186,14 +181,4 @@ python -m pytest --browser=chrome --ambiente=qa
 la estructura de carpetas y archivos debe quedar asi:
 
 ![](./img/carpetas_final.png)
-
-----
-<div style="display: flex; justify-content: space-between;">
-  <div>
-    <p>Ing. Fanny Montoya</p>
-  </div>
-  <div>
-    <p>testingsoftwarearg@gmail.com</p>
-  </div>
-</div>
 
