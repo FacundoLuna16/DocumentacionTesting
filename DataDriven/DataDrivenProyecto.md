@@ -182,3 +182,57 @@ la estructura de carpetas y archivos debe quedar asi:
 
 ![](./img/carpetas_final.png)
 
+
+
+### cambios de la toma de datos
+En ocaciones tomamos datos de una archivo ``.xlsx``, ``.csv``, ``.txt``, ``.db``, ``.json``
+vamos a agregar 2 funciones a nuestro archivo ```data_driven.py``
+
+La primera representara la forma de extrar los datos de un archivo ``.json``
+
+```python
+    def obtener_datos_json(self) -> list:
+        """
+        Método para obtener los datos de un archivo json\n
+        Ejemplo de uso:\n
+        datos = DatosConfig("qa")\n
+        datos.obtener_datos_json("datos.json")\n
+        este método retorna una lista con los datos del archivo json
+        datos = [(),(),(),...]
+        """
+        ruta_archivo = f"../data/datos_{self.ambiente}.json"
+        with open(ruta_archivo) as archivo:
+            datos_json = json.load(archivo)
+
+        datos = []
+        for dato in datos_json:
+            datos.append(tuple(dato.values()))
+
+        return datos
+```
+
+tambien añadiremos una funcion si necesitamos extraer datos de un archivo ``.txt``
+
+```python
+    def obtener_datos_txt(self) -> list:
+        """
+        Método para obtener los datos de un archivo txt\n
+        Ejemplo de uso:\n
+        datos = DatosConfig("qa")\n
+        datos.obtener_datos_txt("datos.txt")\n
+        este método retorna una lista con los datos del archivo txt
+        datos = [(),(),(),...]
+        """
+        ruta_archivo = f"data/datos_{self.ambiente}.txt"
+        datos = []
+
+        with open(ruta_archivo, 'r') as file:
+
+            for line in file:
+                # Lee cada línea y crea una tupla con los valores
+                valores = line.strip().split()
+                tupla = tuple(valores)
+                datos.append(tupla)
+
+        return datos
+```
