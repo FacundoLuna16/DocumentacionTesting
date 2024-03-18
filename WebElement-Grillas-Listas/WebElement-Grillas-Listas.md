@@ -44,17 +44,28 @@ En ambos casos se trabajan de la misma manera, pero hay que tener en cuenta que 
 
 En ocaciones en nuestras paginas web nos encontraremos con etiquetas `Select`
 ```html
-<Select>
-    <Option>hola</Option>
-    <Option>hola1</Option>
-    <Option>hola2</Option>
-    <Option>hola3</Option>
-</Select>
+<select id="searchLanguage" name="language">
+    <option value="af" lang="af">Afrikaans</option><!-- Afrikaans -->
+    <option value="ca" lang="ca">Català</option>
+    <option value="cy" lang="cy">Cymraeg</option><!-- Cymraeg -->
+    <option value="da" lang="da">Dansk</option>
+    <option value="de" lang="de">Deutsch</option>
+    <option value="en" lang="en" selected="selected">English</option><!-- English -->
+    <option value="es" lang="es">Español</option>
+    <option value="eo" lang="eo">Esperanto</option>
+    <option value="eu" lang="eu">Euskara</option>
+    <option value="fr" lang="fr">Français</option><!-- français -->
+    <option value="gl" lang="gl">Galego</option>
+    <option value="hr" lang="hr">Hrvatski</option>
+    <option value="id" lang="id">Bahasa Indonesia</option>
+    <option value="it" lang="it">Italiano</option>
+</select>
+
 ```
 y a estas etiquetas selenium las trata de un matera diferente
 
 ```python
-select_locator=(By.XPATH, "//select[@name='language']")
+select_locator=(By.ID, "searchLanguage']")
 def seleccionar_opcion(driver, valor):
     """
     Función para seleccionar una opción de un elemento <select> utilizando su valor.
@@ -66,4 +77,4 @@ def seleccionar_opcion(driver, valor):
     select_element.select_by_value(valor)
 ```
 
-
+Podran encontrar mas informacion sobre el uso de select [Aqui](https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.support.select)
