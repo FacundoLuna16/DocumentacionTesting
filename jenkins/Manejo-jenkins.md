@@ -49,7 +49,7 @@ Lo primero que debemos hacer es instalarlo
     
     1. General: 
         ![](./img/general.png)
-        ##### <span style="color: blue">Marcamos `desechar ejecuciones antiguas` </span>
+        ##### <span style="color: blue">Marcamos `desechar ejecuciones antiguas(OPCIONAL)` </span>
         - ``Descipcion``: aqui agregaremos alguna descripcion significativa del proyecto
         - ``Desechar ejecuciones antiguas``: Permite desechar automaticamente las ejecuciones antiguas, para mantener el historial limpio
         - ``GitHub project``: Si estamos trabajando con GitHub podemos marcar esta opcion y asociar el repositorio
@@ -96,7 +96,9 @@ Lo primero que debemos hacer es instalarlo
     
 
     6.  Acciones para ejecutar después.
-            ##### <span style="color: blue">Marcamos la opcion Allure Report</span>
+            
+        ##### <span style="color: blue"> Marcamos la opcion Allure Report </span>
+        
         - en el path colocaremos la ruta donde se encuentran los reportes
         `reports/allure-results`
 
